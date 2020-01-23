@@ -1,4 +1,5 @@
 import React from 'react';
+import DataContext from './DataContext';
 import ImgIcono from './ImgIcono';
 var data = require('../data/data');
 
@@ -8,6 +9,7 @@ const imgCentral = require('../assets/images/home/' + data.dataConf.centralimage
 
 
 class ImgHome extends React.Component{
+    static contextType = DataContext;
 
 
     constructor(props) {
@@ -19,34 +21,22 @@ class ImgHome extends React.Component{
             widthImg: 0, // document.getElementById('imgHome').offsetWidth,
             heightImg: 0 // document.getElementById('imgHome').offsetHeight
         };
-        // console.log(oPreuba);
     }
 
    
 
     getImgWidth = () => {
 
-        // return (document.getElementById('imgHome').offsetWidth);
-        // setTimeout(() => {
-            return (this.refImgCentral.current.offsetWidth);
-        // }, 0);
-        // return (this.refImgCentral.current.offsetWidth);
-        // ÑAPAVISO
-        // --> Algunas veces al refrescar da un fallo aquí porque:
-        //     "TypeError: this.refImgCentral.current is null"
-        
+        return (this.refImgCentral.current.offsetWidth);
     }
 
     getImgHeight = () => {
-        // return (document.getElementById('imgHome').offsetHeight);
-        // setTimeout(() => {
         return (this.refImgCentral.current.offsetHeight);
-        // }, 0);
     }
 
     componentDidMount(){
+
         if (!this.refImgCentral) {
-            console.log('Entra porque no tiene referencia');
             this.refImgCentral = React.createRef();
         }
         window.addEventListener('resize', this.updateDimensions.bind(this));
@@ -55,16 +45,13 @@ class ImgHome extends React.Component{
         this.setState({
             widthImg: window.innerWidth,
             heightImg: window.innerHeight
-            /* widthImg: document.getElementById('imgHome').clientWidth,
-            heightImg: document.getElementById('imgHome').clientHeight */
         });
+        this.context.widthImg = this.state.widthImg;
+        this.context.heightImg = this.state.heightImg;
        }, 0);
-       // console.log('componentDidMount');
-       // console.log(this.refImgCentral);
     }
 
     handleLoad() {
-        console.log('handleLoad');
     }
 
     getWindowWidth = () => {
@@ -87,19 +74,14 @@ class ImgHome extends React.Component{
     }
 
     coordinatesMouse = evt => {
-        // console.log('coordinatesMouse');
-            // this.coordinatesMouse2(evt);
             if(this.refImgCentral.current) {
-            // El fallo inicial y que se daba de vez en cuando era porque
-            // al cargar se ejecutaba esta función y en "this.getImgWidth()"
-            // era cuando daba el error
             const oImageOffsetTop = document.getElementById('imgHome').offsetTop;
             const oImageOffsetLeft = document.getElementById('imgHome').offsetLeft;
 
 
-            let iPosTop = 0; // (oImageOffsetTop + oBorder);
+            let iPosTop = 0; 
 
-            let iPosLeft = 0; // (oImageOffsetLeft + oBorder);
+            let iPosLeft = 0;
 
             iPosTop = evt.pageY-oImageOffsetTop;
             iPosLeft = evt.pageX-oImageOffsetLeft;
@@ -139,6 +121,10 @@ class ImgHome extends React.Component{
             widthImg: this.getImgWidth(),
             heightImg: this.getImgHeight()
         });
+        this.context.widthScreen = this.state.widthScreen;
+        this.context.heightScreen = this.state.heightScreen;
+        this.context.widthImg = this.state.widthImg;
+        this.context.heightImg = this.state.heightImg;
 
       };
 
