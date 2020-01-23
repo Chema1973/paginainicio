@@ -88,7 +88,7 @@ export var dataIco = [
 		    "width": "32",
 		    "thumbnails": "",
 		    "extra": "",
-		    "active": "N"
+		    "active": "Y"
 		},
 		{
 		    "id": 5,
