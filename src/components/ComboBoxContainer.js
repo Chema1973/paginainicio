@@ -76,30 +76,75 @@ class ComboBoxContainer extends React.Component{
     }
 
     onClickComboData = evt => {
+        // console.log('onClickComboData:')
+        // console.log(evt);
+        // oObjComboSelect.style.display = "none";
+        var oObjDivContainer = document.getElementById("divParentComboBoxContainer");
 
+        // console.log('Chema::Punto De Control::onClickComboData');
+        // console.log(oObjDivContainer.childNodes[0].childNodes);
+        // console.log(oObjDivContainer.getElementsByTagName("select"));
+        if (oObjDivContainer.getElementsByTagName("select").length > 0) {
+            for(let a = 0; a < oObjDivContainer.getElementsByTagName("select").length; a ++){
+                if (oObjDivContainer.getElementsByTagName("select")[a].style.display === "block") {
+                    oObjDivContainer.getElementsByTagName("select")[a].style.display = "none";
+                    break;
+                }
+            }
+        }
+        
+        
+/*         if (oObjDivContainer.style.display === "none") {
+            oObjDivContainer.style.display = "block"
+        } else {
+            oObjDivContainer.style.display = "none"
+        } */
+        oObjDivContainer.style.display = "none"
     }
 
     render(){
         const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
         return (
             <Draggable bounds={{top: 0, left: 0, right: this.state.rightDraggable, bottom: this.state.bottomDraggable}} {...dragHandlers}>
-            <div id="divParentComboBoxContainer" className="divComboBox" style={{border:'1px solid white'}}>
-        <div id="divComboBoxContainer" className="divComboBoxContainer">
-            <span className="spTitleComboBox" id="spTitleComboBox"></span>
-            <div style={{float:'right'}} className="divClassX" onClick={this.onClickComboData}></div>
-            <div id="divComboBoxResult" className="resultComboBox">
-                {
-                    data.dataCombos.map(combo =>
-                        <ComboBox key={combo.comboid} ComboObjeto={combo}  />
-                    )
-                }
-                </div>
-        </div>
+                <div id="divParentComboBoxContainer" className="divComboBox" style={{border:'1px solid white'}}>
+                    <div id="divComboBoxContainer" className="divComboBoxContainer">
+                        <span className="spTitleComboBox" id="spTitleComboBox">Hola</span>
+                        <div style={{float:'right'}} className="divClassX" onClick={this.onClickComboData}></div>
+                        {/* <div className="wrapper">
+  <a href="#" className="close-button">
+    <div className="in">
+      <div className="close-button-block"></div>
+      <div className="close-button-block"></div>
     </div>
-    </Draggable>
+    <div className="out">
+      <div className="close-button-block"></div>
+      <div className="close-button-block"></div>
+    </div>
+  </a>
+</div> */}
+                        {/* <div>
+                            <a href="#" onClick={this.onClickComboData}>
+                                <span class="left">
+                                    <span class="circle-left"></span>
+                                    <span class="circle-right"></span>
+                                </span>
+                                <span class="right">
+                                    <span class="circle-left"></span>
+                                    <span class="circle-right"></span>
+                                </span>
+                            </a>
+                        </div> */}
+                        <div id="divComboBoxResult" className="resultComboBox">
+                        {
+                            data.dataCombos.map(combo =>
+                                <ComboBox key={combo.comboid} ComboObjeto={combo}  />
+                            )
+                        }
+                        </div>
+                    </div>
+                </div>
+            </Draggable>
         )
-     
-        
     }
 }
 

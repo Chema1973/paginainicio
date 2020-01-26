@@ -9,9 +9,11 @@ class ImgIcono extends React.Component{
         super(props);
         this.help_finder = this.help_finder.bind(this);
         this.show_combo_data = this.show_combo_data.bind(this);
+        this.text_box_coordinates = this.text_box_coordinates.bind(this);
         this.funcMap = {
             'help_finder': this.help_finder,
-            'show_combo_data' : this.show_combo_data
+            'show_combo_data' : this.show_combo_data,
+            'text_box_coordinates': this.text_box_coordinates
         };
         this.state = {step: '1'};
         this.state = { 
@@ -40,6 +42,11 @@ class ImgIcono extends React.Component{
     //     El segundo es en "Vertical" (TOP)
 
     setIconoPosition = (constBigger) => {
+
+        // ÑAPAVISO
+        // --> REVISAR: con coordenadas 100,100 lo hace mal
+        //        Ejemplo con yahoo
+
 
         const icoPosLeft = this.props.IconoObjecto.coordinates.split(',')[0];
         const icoPosTop = this.props.IconoObjecto.coordinates.split(',')[1];
@@ -74,7 +81,7 @@ class ImgIcono extends React.Component{
             iTop = oImageOffsetTop;
         }
 
-        if ((iLeft + icoWidth) >= (imgWidth + oImageOffsetLeft))
+        /* if ((iLeft + icoWidth) >= (imgWidth + oImageOffsetLeft))
         {
             iLeft = (imgWidth + oImageOffsetLeft) - icoWidth;
         }
@@ -82,7 +89,7 @@ class ImgIcono extends React.Component{
         if ((iTop + icoHeight) >= (imgHeight + oImageOffsetTop))
         {
             iTop = (imgHeight + oImageOffsetTop) - icoHeight;
-        }
+        } */
 
         this.setState({
             topImagen:iTop,
@@ -93,6 +100,92 @@ class ImgIcono extends React.Component{
     }
 
     help_finder = (oParam) => {
+
+    }
+
+    text_box_coordinates = () => {
+        console.log('text_box_coordinates');
+        var objTxtMouse = document.getElementById("txtMouse");
+        if(objTxtMouse.style.display === "none") {
+            objTxtMouse.style.display = "block";
+            window.addEventListener('mousemove', this.coordinatesMouse);
+        } else {
+            objTxtMouse.style.display = "none";
+            window.removeEventListener('mousemove', this.coordinatesMouse);
+        }
+        // console.log(objTxtMouse.display);
+        /* let oData = this.context;
+        console.log(oData);
+        if(oData.displayTxtMouse === 'block') {
+            oData.displayTxtMouse = 'none';
+        } else {
+            oData.displayTxtMouse = 'block';
+
+        } */
+
+        
+        
+/*
+if ($("#txtMouse").css("display") == "none")
+    {
+        $("#txtMouse").css("display", "block");
+        // Aunque lo haga sobre "#imgHome" el resultado es el mismo
+        $("body").mousemove(function (event) {
+            get_mouse_coordinates(event);
+        });
+    }
+    else
+    {
+        $("#txtMouse").css("display", "none");
+        $("body").off("mousemove");
+    }
+        */
+    }
+
+    coordinatesMouse = evt => {
+        // if(this.refImgCentral.current) {
+        // console.log(evt);
+        // ÑAPAQUI
+        // --> Las coordenadas no se ajustan cuando salen por la derecha o por abajo
+
+            const oImageOffsetTop = document.getElementById('imgHome').offsetTop;
+            const oImageOffsetLeft = document.getElementById('imgHome').offsetLeft;
+
+
+            let iPosTop = 0; 
+
+            let iPosLeft = 0;
+
+            iPosTop = evt.pageY-oImageOffsetTop;
+            iPosLeft = evt.pageX-oImageOffsetLeft;
+
+            /* const iWidthImgCentral = this.getImgWidth();
+            const iHeightImgCentral = this.getImgHeight(); */
+            const iWidthImgCentral = this.context.widthImg;
+            const iHeightImgCentral = this.context.heightImg;
+        
+            if (iPosLeft <= 0)
+                iPosLeft = 0;
+            else
+            {
+                iPosLeft = ((data.dataConf.constimgrelwidth * (evt.pageX - oImageOffsetLeft)) / iWidthImgCentral);
+                if (iPosLeft >= data.dataConf.constimgrelwidth) iPosLeft = data.dataConf.constimgrelwidth;
+            }
+
+            if (iPosTop <= 0)
+                iPosTop = 0;
+            else
+            {   
+                iPosTop = ((data.dataConf.constimgrelheight * (evt.pageY - oImageOffsetTop)) / iHeightImgCentral);
+                if (iPosTop >= data.dataConf.constimgrelheight) iPosTop = data.dataConf.constimgrelheight;
+            }
+
+
+            document.getElementById('txtMouse').value = parseInt(iPosTop,10) + ' - ' + parseInt(iPosLeft,10);
+        /* }
+        else {
+            document.getElementById('txtMouse').value = 'Cargando...';
+        } */
 
     }
 
@@ -119,6 +212,9 @@ class ImgIcono extends React.Component{
             oObjDivContainer.style.top = document.getElementById('imgHome').offsetTop;
             oObjDivContainer.style.left = document.getElementById('imgHome').offsetLeft;
             oObjDivContainer.style.height= "50px";
+            document.getElementById("spTitleComboBox").textContent = "cmb_" + oParam;
+            // "comboid": "utiles", --> Coger de la colección de "dataCombos" pero "Help"
+            // no está en la colección porque es "dinámico"
             document.getElementById('divComboBoxContainer').style.height="50px";
         } else {
                 // Combo se muestra el mismo combo, se oculta todo

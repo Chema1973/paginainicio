@@ -1,8 +1,12 @@
 import React from 'react';
+import DataContext from './DataContext';
 
 // https://stackoverflow.com/questions/38402025/how-to-create-helper-file-full-of-functions-in-react-native
 
 class Coordenadas extends React.Component{
+    static contextType = DataContext;
+
+    // displayTxtMouse
 
     onChangeSearch = evt => {
         // Si se pone "value" y no se pone "onChange"
@@ -10,10 +14,12 @@ class Coordenadas extends React.Component{
         // console.log('onChangeSearch');
     }
 
+    
+
     render(){
-     
+        // console.log(this.context);
         return (
-            <input type="text" id="txtMouse" name="txtMouse" value="hola" onChange={this.onChangeSearch} style={{position: 'absolute', top:'5px', left:'5px'}} />
+            <input type="text" id="txtMouse" name="txtMouse" value="hola" onChange={this.onChangeSearch} style={{position: 'absolute', top:'5px', left:'5px', display: 'none'}} />
         )
      
         

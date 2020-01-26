@@ -77,15 +77,15 @@ export var dataIco = [
 		    "name": "Yahoo",
 		    "description": "",
 		    "type": "img",
-		    "coordinates": "1000,0",
+		    "coordinates": "200,200",
 		    "onclick": "url",
 		    "action": "http://edit.europe.yahoo.com/config/mail?.intl=es",
 		    "icon": "email-yahoo-icon.png",
 		    "titlealt": "Yahoo",
 		    "css": "",
 		    "style": "",
-		    "height": "32",
-		    "width": "32",
+		    "height": 32,
+		    "width": 32,
 		    "thumbnails": "",
 		    "extra": "",
 		    "active": "Y"
@@ -102,11 +102,11 @@ export var dataIco = [
 		    "titlealt": "Google Maps",
 		    "css": "",
 		    "style": "",
-		    "height": "32",
-		    "width": "32",
+		    "height": 32,
+		    "width": 32,
 		    "thumbnails": "",
 		    "extra": "",
-		    "active": "N"
+		    "active": "Y"
 		},
         {
             "id": 6,
@@ -138,11 +138,11 @@ export var dataIco = [
             "titlealt": "Google Maps",
             "css": "",
             "style": "",
-            "height": "32",
-            "width": "32",
+            "height": 32,
+            "width": 32,
             "thumbnails": "",
             "extra": "",
-            "active": "N"
+            "active": "Y"
         },
         {
             "id": 8,
@@ -151,16 +151,16 @@ export var dataIco = [
             "type": "img",
             "coordinates": "355,380",
             "onclick": "fcn",
-            "action": "text_box_coordinates();",
+            "action": "text_box_coordinates",
             "icon": "World-icon.png",
             "titlealt": "Coordenadas",
             "css": "",
             "style": "",
-            "height": "32",
-            "width": "32",
+            "height": 32,
+            "width": 32,
             "thumbnails": "",
             "extra": "",
-            "active": "N"
+            "active": "Y"
         },
         {
             "id": 9,
@@ -174,11 +174,11 @@ export var dataIco = [
             "titlealt": "Google",
             "css": "",
             "style": "",
-            "height": "32",
-            "width": "64",
+            "height": 32,
+            "width": 64,
             "thumbnails": "google.png",
             "extra": "",
-            "active": "N"
+            "active": "Y"
         },
         {
             "id": 10,
@@ -192,11 +192,11 @@ export var dataIco = [
             "titlealt": "Google",
             "css": "",
             "style": "",
-            "height": "32",
-            "width": "64",
+            "height": 32,
+            "width": 64,
             "thumbnails": "google.png",
             "extra": "",
-            "active": "N"
+            "active": "Y"
         }
     ,
         {
@@ -211,11 +211,11 @@ export var dataIco = [
             "titlealt": "Google",
             "css": "",
             "style": "",
-            "height": "32",
-            "width": "64",
+            "height": 32,
+            "width": 64,
             "thumbnails": "google.png",
             "extra": "",
-            "active": "N"
+            "active": "Y"
         }
 
     ,
@@ -246,16 +246,17 @@ export var dataIco = [
             "type": "img",
             "coordinates": "550,200",
             "onclick": "fcn",
-            "action": "show_combo_data('programacion');",
+            "action": "show_combo_data",
+            "actionParams": "programacion",
             "icon": "cTest.PNG",
             "titlealt": "Google Prueba Combo Programación",
             "css": "",
             "style": "",
-            "height": "32",
-            "width": "32",
+            "height": 32,
+            "width": 32,
             "thumbnails": "", // Un combo no tendrá miniatura
             "extra": "",
-            "active": "N"
+            "active": "Y"
         }
     ,
         {
@@ -265,16 +266,17 @@ export var dataIco = [
             "type": "img",
             "coordinates": "600,250",
             "onclick": "fcn",
-            "action": "show_combo_data('prueba');",
+            "action": "show_combo_data",
+            "actionParams": "prueba",
             "icon": "cTest.PNG",
             "titlealt": "Google Prueba Combo Prueba",
             "css": "",
             "style": "",
-            "height": "32",
-            "width": "32",
+            "height": 32,
+            "width": 32,
             "thumbnails": "", // Un combo no tendrá miniatura
             "extra": "",
-            "active": "N"
+            "active": "Y"
         },
         {
             "id": 15,
@@ -288,11 +290,11 @@ export var dataIco = [
             "titlealt": "Prueba Precisión",
             "css": "",
             "style": "",
-            "height": "32",
-            "width": "32",
+            "height": 32,
+            "width": 32,
             "thumbnails": "", // Un combo no tendrá miniatura
             "extra": "",
-            "active": "N"
+            "active": "Y"
         },
         {
             "id": 16,

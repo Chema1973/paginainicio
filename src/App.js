@@ -14,13 +14,15 @@ function App() {
       widthScreen: 0,
       heightScreen: 0,
       widthImg: 0,
-      heightImg: 0
+      heightImg: 0,
+      displayTxtMouse: 'none'
   }
 
   return (
     <DataProvider value={datosDinamicos}>
     <div className="App">
       <header className="App-header">
+      {/* { datosDinamicos.displayTxtMouse ? <Coordenadas/> : null } */}
         <Coordenadas/>
         <ImgHome/>
         <Buscador/>

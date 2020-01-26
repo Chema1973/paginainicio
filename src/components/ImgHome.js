@@ -1,5 +1,6 @@
 import React from 'react';
 import DataContext from './DataContext';
+import Coordenadas from './Coordenadas';
 import ImgIcono from './ImgIcono';
 var data = require('../data/data');
 
@@ -40,7 +41,7 @@ class ImgHome extends React.Component{
             this.refImgCentral = React.createRef();
         }
         window.addEventListener('resize', this.updateDimensions.bind(this));
-        window.addEventListener('mousemove', this.coordinatesMouse);
+        // window.addEventListener('mousemove', this.coordinatesMouse);
        setTimeout(() => {
         this.setState({
             widthImg: window.innerWidth,
@@ -65,7 +66,7 @@ class ImgHome extends React.Component{
 
     componentWillUnmount() {
         window.removeEventListener('resize', this.updateDimensions.bind(this));
-        window.removeEventListener('mousemove', this.coordinatesMouse);
+        // window.removeEventListener('mousemove', this.coordinatesMouse);
     }
 
     coordinatesMouse2(evt){
@@ -145,6 +146,8 @@ class ImgHome extends React.Component{
         } else {
         return (
             <div style={{backGroundColor:'black'}}>
+                {/* <Coordenadas/> */}
+                {/* this.context.displayTxtMouse ? <Coordenadas/> : null */}
             <img
                 ref={this.refImgCentral}
                 style={{display:"flex"}} 
