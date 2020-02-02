@@ -29,7 +29,7 @@ class ImgIcono extends React.Component{
       }
 
     componentDidMount(){
-        this.setIconoPosition();
+        this.setIconoPosition(1);
         window.addEventListener('resize', this.setIconoPosition);
     }
 
@@ -43,18 +43,13 @@ class ImgIcono extends React.Component{
 
     setIconoPosition = (constBigger) => {
 
-        // ÑAPAVISO
-        // --> REVISAR: con coordenadas 100,100 lo hace mal
-        //        Ejemplo con yahoo
-
-
         const icoPosLeft = this.props.IconoObjecto.coordinates.split(',')[0];
         const icoPosTop = this.props.IconoObjecto.coordinates.split(',')[1];
 
-        const oImg = this.props.Referencia.current.getBoundingClientRect();
-        const imgWidth = oImg.width;
-        const imgHeight = oImg.height;
+        // const oImg = this.props.Referencia.current.getBoundingClientRect();
 
+        const imgWidth = this.context.widthImg;
+        const imgHeight = this.context.heightImg;
         let icoWidth = this.props.IconoObjecto.width;
         let icoHeight = this.props.IconoObjecto.height;
         if (constBigger && typeof(constBigger) === 'number') {
@@ -64,14 +59,21 @@ class ImgIcono extends React.Component{
             icoHeight = icoHeight * constBigger;
         }
 
-        const iTempLeft = (imgWidth * icoPosLeft) / data.dataConf.constimgrelwidth;
-        const iTempTop = (imgHeight * icoPosTop) / data.dataConf.constimgrelheight;
+        const desvWidth = 1;
+        const desvTop = 10;
+        // ÑAPAVISO
+        // --> Corrección que ajusta la posición con las coordenadas del ratón
+        //     En su momento hay que averiguar el porque
 
-        const oImageOffsetTop = document.getElementById('imgHome').offsetTop;
-        const oImageOffsetLeft = document.getElementById('imgHome').offsetLeft;
+        const iTempLeft = ((imgWidth - desvWidth) * icoPosLeft) / data.dataConf.constimgrelwidth;
+        const iTempTop = ((imgHeight - desvTop) * icoPosTop) / data.dataConf.constimgrelheight;
+
+        const oImageOffsetTop = data.dataConf.marginbody;
+        const oImageOffsetLeft = data.dataConf.marginbody;
 
         let iLeft = iTempLeft + oImageOffsetLeft - (icoWidth / 2);
         let iTop = iTempTop + oImageOffsetTop - (icoHeight / 2);
+
 
 
         if (iLeft <= oImageOffsetLeft + (icoWidth / 2)){
@@ -81,15 +83,12 @@ class ImgIcono extends React.Component{
             iTop = oImageOffsetTop;
         }
 
-        /* if ((iLeft + icoWidth) >= (imgWidth + oImageOffsetLeft))
-        {
-            iLeft = (imgWidth + oImageOffsetLeft) - icoWidth;
-        }
-
-        if ((iTop + icoHeight) >= (imgHeight + oImageOffsetTop))
-        {
-            iTop = (imgHeight + oImageOffsetTop) - icoHeight;
-        } */
+        // Aquí también se ha tenido que aplicar la "desviación"
+        if (iTop + (icoHeight / 2) + desvTop >= imgHeight)
+            iTop = imgHeight - icoHeight - oImageOffsetTop;
+        
+        if (iLeft + (icoWidth / 2) >= imgWidth)
+            iLeft = imgWidth - icoWidth -oImageOffsetLeft;
 
         this.setState({
             topImagen:iTop,
@@ -104,7 +103,6 @@ class ImgIcono extends React.Component{
     }
 
     text_box_coordinates = () => {
-        console.log('text_box_coordinates');
         var objTxtMouse = document.getElementById("txtMouse");
         if(objTxtMouse.style.display === "none") {
             objTxtMouse.style.display = "block";
@@ -113,62 +111,28 @@ class ImgIcono extends React.Component{
             objTxtMouse.style.display = "none";
             window.removeEventListener('mousemove', this.coordinatesMouse);
         }
-        // console.log(objTxtMouse.display);
-        /* let oData = this.context;
-        console.log(oData);
-        if(oData.displayTxtMouse === 'block') {
-            oData.displayTxtMouse = 'none';
-        } else {
-            oData.displayTxtMouse = 'block';
-
-        } */
-
-        
-        
-/*
-if ($("#txtMouse").css("display") == "none")
-    {
-        $("#txtMouse").css("display", "block");
-        // Aunque lo haga sobre "#imgHome" el resultado es el mismo
-        $("body").mousemove(function (event) {
-            get_mouse_coordinates(event);
-        });
-    }
-    else
-    {
-        $("#txtMouse").css("display", "none");
-        $("body").off("mousemove");
-    }
-        */
     }
 
     coordinatesMouse = evt => {
-        // if(this.refImgCentral.current) {
-        // console.log(evt);
-        // ÑAPAQUI
-        // --> Las coordenadas no se ajustan cuando salen por la derecha o por abajo
 
-            const oImageOffsetTop = document.getElementById('imgHome').offsetTop;
-            const oImageOffsetLeft = document.getElementById('imgHome').offsetLeft;
+// Esto parece que está
+// Cuando se muestra y hay redimensión de la pantalla "no lo coge bien"
 
-
+            const oImageOffsetTop = data.dataConf.marginbody;
+            const oImageOffsetLeft = data.dataConf.marginbody;
             let iPosTop = 0; 
-
             let iPosLeft = 0;
 
-            iPosTop = evt.pageY-oImageOffsetTop;
-            iPosLeft = evt.pageX-oImageOffsetLeft;
-
-            /* const iWidthImgCentral = this.getImgWidth();
-            const iHeightImgCentral = this.getImgHeight(); */
+            iPosTop = evt.pageY;
+            iPosLeft = evt.pageX;
             const iWidthImgCentral = this.context.widthImg;
             const iHeightImgCentral = this.context.heightImg;
-        
+
             if (iPosLeft <= 0)
                 iPosLeft = 0;
             else
             {
-                iPosLeft = ((data.dataConf.constimgrelwidth * (evt.pageX - oImageOffsetLeft)) / iWidthImgCentral);
+                iPosLeft = ((data.dataConf.constimgrelwidth * (evt.pageX + (oImageOffsetLeft * 2))) / iWidthImgCentral);
                 if (iPosLeft >= data.dataConf.constimgrelwidth) iPosLeft = data.dataConf.constimgrelwidth;
             }
 
@@ -176,17 +140,11 @@ if ($("#txtMouse").css("display") == "none")
                 iPosTop = 0;
             else
             {   
-                iPosTop = ((data.dataConf.constimgrelheight * (evt.pageY - oImageOffsetTop)) / iHeightImgCentral);
+                iPosTop = ((data.dataConf.constimgrelheight * (evt.pageY + (oImageOffsetTop * 2))) / iHeightImgCentral);
                 if (iPosTop >= data.dataConf.constimgrelheight) iPosTop = data.dataConf.constimgrelheight;
             }
 
-
             document.getElementById('txtMouse').value = parseInt(iPosTop,10) + ' - ' + parseInt(iPosLeft,10);
-        /* }
-        else {
-            document.getElementById('txtMouse').value = 'Cargando...';
-        } */
-
     }
 
     show_combo_data = (oParam) => {
