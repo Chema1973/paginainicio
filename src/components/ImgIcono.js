@@ -59,14 +59,8 @@ class ImgIcono extends React.Component{
             icoHeight = icoHeight * constBigger;
         }
 
-        const desvWidth = 1;
-        const desvTop = 10;
-        // ÑAPAVISO
-        // --> Corrección que ajusta la posición con las coordenadas del ratón
-        //     En su momento hay que averiguar el porque
-
-        const iTempLeft = ((imgWidth - desvWidth) * icoPosLeft) / data.dataConf.constimgrelwidth;
-        const iTempTop = ((imgHeight - desvTop) * icoPosTop) / data.dataConf.constimgrelheight;
+        const iTempLeft = ((imgWidth) * icoPosLeft) / data.dataConf.constimgrelwidth;
+        const iTempTop = ((imgHeight) * icoPosTop) / data.dataConf.constimgrelheight;
 
         const oImageOffsetTop = data.dataConf.marginbody;
         const oImageOffsetLeft = data.dataConf.marginbody;
@@ -84,7 +78,7 @@ class ImgIcono extends React.Component{
         }
 
         // Aquí también se ha tenido que aplicar la "desviación"
-        if (iTop + (icoHeight / 2) + desvTop >= imgHeight)
+        if (iTop + (icoHeight / 2) >= imgHeight)
             iTop = imgHeight - icoHeight - oImageOffsetTop;
         
         if (iLeft + (icoWidth / 2) >= imgWidth)
@@ -98,8 +92,17 @@ class ImgIcono extends React.Component{
         })
     }
 
-    help_finder = (oParam) => {
+    help_finder = () => {
+        // console.log('help_finder');
 
+        var oDiv = document.getElementById('divSearchBoxContainer');
+
+        if (oDiv.style.display === 'none') {
+            oDiv.style.display = "block";
+        }
+        else {
+            oDiv.style.display = "none";
+        }
     }
 
     text_box_coordinates = () => {
@@ -170,7 +173,10 @@ class ImgIcono extends React.Component{
             oObjDivContainer.style.top = document.getElementById('imgHome').offsetTop;
             oObjDivContainer.style.left = document.getElementById('imgHome').offsetLeft;
             oObjDivContainer.style.height= "50px";
-            document.getElementById("spTitleComboBox").textContent = "cmb_" + oParam;
+            // $("#spTitleComboBox").text(dataCombos.find(x => x.comboid == sId).comboname);
+            let oTitle = data.dataCombos.find(x => x.comboid === oParam).comboname;
+            // document.getElementById("spTitleComboBox").textContent = "cmb_" + oParam;
+            document.getElementById("spTitleComboBox").textContent = oTitle;
             // "comboid": "utiles", --> Coger de la colección de "dataCombos" pero "Help"
             // no está en la colección porque es "dinámico"
             document.getElementById('divComboBoxContainer').style.height="50px";

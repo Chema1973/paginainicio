@@ -107,9 +107,12 @@ class ComboBoxContainer extends React.Component{
         return (
             <Draggable bounds={{top: 0, left: 0, right: this.state.rightDraggable, bottom: this.state.bottomDraggable}} {...dragHandlers}>
                 <div id="divParentComboBoxContainer" className="divComboBox" style={{border:'1px solid white'}}>
-                    <div id="divComboBoxContainer" className="divComboBoxContainer">
-                        <span className="spTitleComboBox" id="spTitleComboBox">Hola</span>
-                        <div style={{float:'right'}} className="divClassX" onClick={this.onClickComboData}></div>
+                    <div id="divComboBoxContainer" className="divComboBoxContainer" style={{display: 'block'}}>
+                        <div className="spTitleComboBox">
+                            <span id="spTitleComboBox">Texto</span><div style={{float:'right'}} className="divClassX" onClick={this.onClickComboData}></div>
+                        </div>
+                        {/* <div style={{float:'right'}} className="divClassX" onClick={this.onClickComboData}></div> */}
+                        
                         {/* <div className="wrapper">
   <a href="#" className="close-button">
     <div className="in">

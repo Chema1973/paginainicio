@@ -3,7 +3,7 @@ export var dataConf = {
     "marginbody":1,
     "iconpath": "HomePage_files/img/",
     "thumbnailspath": "HomePage_files/img/thumbnails/",
-    "constbigger": 1.4, // Mínimo 1.0
+    "constbigger": 1.4, // MÃ­nimo 1.0
     "constimgrelwidth": 2000,   // Ancho relativo de la imagen. Mida lo que mida le asignamos 2000
     "constimgrelheight": 1000   // Altura relativa de la imagen. Mida lo que mida le asignamos 1000
 };
@@ -25,7 +25,7 @@ export var dataIco = [
             "style": "",
             "height": 32,
             "width": 32,
-            "thumbnails": "", // Un combo no tendrá miniatura
+            "thumbnails": "", // Un combo no tendrÃ¡ miniatura
             "extra": "",
             "active": "Y"
     },
@@ -53,7 +53,7 @@ export var dataIco = [
         {
             "id": 3,
             "name": "Coordenadas",
-            "description": "Muestra las coordenadas del ratón",
+            "description": "Muestra las coordenadas del ratÃ³n",
             "type": "img",
             "coordinates": "355,380",
             "onclick": "fcn",
@@ -167,7 +167,7 @@ export var dataIco = [
         {
             "id": 9,
             "name": "R.A.E.",
-            "description": "Real Academia Española",
+            "description": "Real Academia EspaÃ±ola",
             "type": "img",
             "coordinates": "700,480",
             "onclick": "url",
@@ -243,20 +243,20 @@ export var dataIco = [
     ,
         {
             "id": 13,
-            "name": "Combo Url Programación",
-            "description": "Combo con Urls de Programación",
+            "name": "Combo Url ProgramaciÃ³n",
+            "description": "Combo con Urls de ProgramaciÃ³n",
             "type": "img",
             "coordinates": "176,460",
             "onclick": "fcn",
             "action": "show_combo_data",
 			"actionParams": "programacion",
             "icon": "Apps-Ide-Web-icon.png",
-            "titlealt": "Combo Url Programación",
+            "titlealt": "Combo Url ProgramaciÃ³n",
             "css": "",
             "style": "",
             "height": 32,
             "width": 32,
-            "thumbnails": "", // Un combo no tendrá miniatura
+            "thumbnails": "", // Un combo no tendrÃ¡ miniatura
             "extra": "",
             "active": "Y"
         }
@@ -276,7 +276,7 @@ export var dataIco = [
             "style": "",
             "height": 32,
             "width": 32,
-            "thumbnails": "", // Un combo no tendrá miniatura
+            "thumbnails": "", // Un combo no tendrÃ¡ miniatura
             "extra": "",
             "active": "Y"
         }
@@ -376,14 +376,15 @@ export var dataIco = [
     ,
         {
             "id": 20,
-            "name": "Periódicos OnLine",
-            "description": "Combo Periódicos OnLine",
+            "name": "PeriÃ³dicos OnLine",
+            "description": "Combo PeriÃ³dicos OnLine",
             "type": "img",
             "coordinates": "400, 785",
             "onclick": "fcn",
-            "action": "show_combo_data('periodicos');",
+            "action": "show_combo_data",
+			"actionParams": "periodicos",
             "icon": "Newspapers-2-icon.png",
-            "titlealt": "Periódicos OnLine",
+            "titlealt": "PeriÃ³dicos OnLine",
             "css": "",
             "style": "",
             "height": 32,
@@ -396,7 +397,7 @@ export var dataIco = [
         {
             "id": 21,
             "name": "El Mundo",
-            "description": "Periódico El Mundo",
+            "description": "PeriÃ³dico El Mundo",
             "type": "img",
             "coordinates": "350, 850",
             "onclick": "url",
@@ -414,14 +415,14 @@ export var dataIco = [
     ,
         {
             "id": 22,
-            "name": "Guía TV",
-            "description": "Guía TV",
+            "name": "GuÃ­a TV",
+            "description": "GuÃ­a TV",
             "type": "img",
             "coordinates": "132, 820",
             "onclick": "url",
             "action": "http://www.elmundo.es/elmundo/television/guiatv/",
             "icon": "GuiaTV.png",
-            "titlealt": "Guía TV",
+            "titlealt": "GuÃ­a TV",
             "css": "",
             "style": "",
             "height": 32,
@@ -453,13 +454,13 @@ export var dataIco = [
         {
             "id": 24,
             "name": "Test de Velocidad",
-            "description": "Guía TV",
+            "description": "Test de Velocidad",
             "type": "img",
             "coordinates": "145, 635",
             "onclick": "url",
             "action": "http://www.testdevelocidad.es/",
             "icon": "Downloads-1-icon.png",
-            "titlealt": "Guía TV",
+            "titlealt": "Test de Velocidad",
             "css": "",
             "style": "",
             "height": 32,
@@ -661,14 +662,14 @@ export var dataIco = [
     ,
         {
             "id": 35,
-            "name": "Loterías del Estado",
-            "description": "Loterías del Estado",
+            "name": "LoterÃ­as del Estado",
+            "description": "LoterÃ­as del Estado",
             "type": "img",
             "coordinates": "100, 940",
             "onclick": "url",
             "action": "https://www.loteriasyapuestas.es/es#",
             "icon": "lottery-folder-icon.png",
-            "titlealt": "Loterías del Estado",
+            "titlealt": "LoterÃ­as del Estado",
             "css": "",
             "style": "",
             "height": 32,
@@ -932,7 +933,7 @@ export var dataIco = [
             "name": "TEST",
             "description": "TEST",
             "type": "img",
-            "coordinates": "790, 210",
+            "coordinates": "1222, 381",
             "onclick": "url",
 			"action": "https://moovitapp.com/",
             "icon": "cTest.PNG",
@@ -947,25 +948,25 @@ export var dataIco = [
         }
 ];
 
-// ÑAPAVISO - FIN Colección Datos principales
+// Ã‘APAVISO - FIN ColecciÃ³n Datos principales
 
 //  
 
 // Filter the icons data with "active=Yes"
 dataIco = dataIco.filter(function (data) {
-    return data.active == "Y";
+    return data.active === "Y";
 });
 
-// Colección de combos
-// Tiene que estar declarada como mínimo
+// ColecciÃ³n de combos
+// Tiene que estar declarada como mÃ­nimo
 //var dataCombos = [];
 
 
 export var dataCombos = [
     {
         "comboid": "programacion",
-        "comboname": "Url Programación",
-        "combodescripcion": "Url de sitios de programación",
+        "comboname": "Url ProgramaciÃ³n",
+        "combodescripcion": "Url de sitios de programaciÃ³n",
         "comboactive": "Y",
         "combosize" : 3,
         "combocoleccion": [
@@ -1097,20 +1098,20 @@ export var dataCombos = [
         "combosize": 3,
         "combocoleccion": [
             {
-                "text": "Monitorización Internet",
+                "text": "MonitorizaciÃ³n Internet",
                 "value": "http://www.akamai.com/html/technology/dataviz1.html",
                 "orden": 1,
                 "active": "Y"
             },
             {
-                "text": "MD5 Encriptación",
+                "text": "MD5 EncriptaciÃ³n",
                 "value": "http://www.cuwhois.com/herramienta-seo-md5.php",
                 "orden": 2,
                 "active": "Y"
             }
             ,
             {
-                "text": "MD5 Desencriptación",
+                "text": "MD5 DesencriptaciÃ³n",
                 "value": "http://md5.rednoize.com/",
                 "orden": 3,
                 "active": "Y"
@@ -1152,7 +1153,7 @@ export var dataCombos = [
             }
             ,
             {
-                "text": "Tarjetas de Crédito - Pruebas",
+                "text": "Tarjetas de CrÃ©dito - Pruebas",
                 "value": "http://modulosdepago.es/Tarjetas-de-cr%C3%A9dito-pruebas",
                 "orden": 9,
                 "active": "Y"
@@ -1197,8 +1198,8 @@ export var dataCombos = [
     ,
     { 
         "comboid": "periodicos",
-        "comboname": "Periódicos online",
-        "combodescripcion": "Combo de periódicos online",
+        "comboname": "PeriÃ³dicos online",
+        "combodescripcion": "Combo de periÃ³dicos online",
         "comboactive": "Y",
         "combosize": 3,
         "combocoleccion": [
@@ -1209,7 +1210,7 @@ export var dataCombos = [
                 "active": "Y"
             },
             {
-                "text": "El País",
+                "text": "El PaÃ­s",
                 "value": "http://www.elpais.com/",
                 "orden": 2,
                 "active": "Y"
@@ -1241,7 +1242,7 @@ export var dataCombos = [
     {
         "comboid": "radiosidiomas",
         "comboname": "Radios en Idiomas",
-        "combodescripcion": "Combo de radios online en inglés",
+        "combodescripcion": "Combo de radios online en inglÃ©s",
         "comboactive": "Y",
         "combosize": 3,
         "combocoleccion": [
@@ -1258,8 +1259,8 @@ export var dataCombos = [
                 "active": "Y"
             },
             {
-                "text": "La Classe Francaiçe",
-                "value": "https://laclassefrançaise.es/cultura-francesa/radios-francesas/",
+                "text": "La Classe FrancaiÃ§e",
+                "value": "https://laclassefranÃ§aise.es/cultura-francesa/radios-francesas/",
                 "orden": 4,
                 "active": "Y"
             },
@@ -1278,7 +1279,7 @@ export var dataCombos = [
 
 // Filter the combos data with "comboactive=Yes"
 dataCombos = dataCombos.filter(function (data) {
-    return data.comboactive == "Y";
+    return data.comboactive === "Y";
 });
 
 
@@ -1287,7 +1288,7 @@ dataCombos = dataCombos.filter(function (data) {
 // http://prcs-lpt-016:81/Reports/browse/
 // https://regex101.com/r/gG3cX2/1
 
-// Tu usuario en Project Center es jose.pairet@e.ineco.com y tu contraseña I119QHE7
+// Tu usuario en Project Center es jose.pairet@e.ineco.com y tu contraseÃ±a I119QHE7
 // https://projectcenter.ineco.es//projectcenter/Account.aspx/RedirectLogOn?returnurl=/projectcenter/Home.aspx?d=true
 
 

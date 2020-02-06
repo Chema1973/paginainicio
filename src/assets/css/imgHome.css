@@ -32,6 +32,8 @@
     padding-left:5px;
     color:black;
     width: 100%;
+    font-size: 20px;
+    height: auto;
 }
 
 div.divClassX{
@@ -43,10 +45,12 @@ div.divClassX{
     background:#B30000;
     font-size: 20px;
     /* font-weight: bold; */
-    display: inline-block;
+    /* display: inline-block; */
     line-height: 0px;
     padding: 11px 3px;   
     margin-bottom: 5px; 
+    margin-right:5px;
+    
   /*   cursor: pointer;
     position: absolute;
     top: 50%;
@@ -68,6 +72,9 @@ div.divClassX{
     vertical-align: top !important; */
     /* vertical-align: auto !important; */
     margin-bottom: 10px;
+    /* margin-right: 10px; */
+    /* top: -50px !important;
+    position: fixed; */
     /* padding-bottom: 10px; */
 }
 
@@ -77,6 +84,8 @@ div.divClassX{
      background-color: blue;
     z-index: 110;
     padding-top: 3px;
+    position:fixed;
+    /* display:inline-block; */
 }
 
 
@@ -209,3 +218,64 @@ div {
     }
   }
 } */
+
+
+
+.divBuscador
+{
+	height:25px;
+    z-index:10;
+    width:200px;
+    display:none;
+    position:absolute;
+    top: 5px;
+    left: 5px;
+    background-color:Blue;
+    cursor:move;
+	padding:2px;
+	/*color:White;*/
+	font-weight:bold;
+	/*text-align:center;*/
+	/*border-top-right-radius:10;-moz-border-radius-topright:10;-webkit-border-top-right-radius:10;
+	border-top-left-radius:10;-moz-border-radius-topleft:10;-webkit-border-top-left-radius:10;
+	border-bottom-right-radius:10;-moz-border-radius-bottomright:10;-webkit-border-bottom-right-radius:10;
+	border-bottom-left-radius:10;-moz-border-radius-bottomleft:10;-webkit-border-bottom-left-radius:10;*/
+}
+
+
+.divSearchContainer {
+    height:25px;
+    width:200px;
+    z-index:100;
+    background-color:blue;
+}
+
+/* div.divClassX{
+    float:right;
+    cursor:pointer;
+    color: #fff;
+    border: 1px solid #AEAEAE;
+    border-radius: 30px;
+    background:#B30000 ;
+    font-size: 31px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0px;
+    padding: 11px 3px;       
+}
+
+.divClassX:before {
+    content: "\00d7";
+}
+ */
+
+ .resultSearch
+{
+	cursor:pointer;
+	white-space:nowrap;
+	/*width:100%;*/
+    width:200px;
+	display: table;
+    background-color:white;
+    z-index:110;
+}
