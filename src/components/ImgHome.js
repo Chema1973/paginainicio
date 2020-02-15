@@ -35,8 +35,8 @@ class ImgHome extends React.Component{
         window.addEventListener('resize', this.updateDimensions.bind(this));
 
         this.setState({
-            widthScreen: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-            heightScreen:window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight,
+            widthScreen: document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth,
+            heightScreen:document.documentElement.clientHeight|| document.body.clientHeight || window.innerHeight,
             widthImg: (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth) - data.dataConf.marginbody, // oImgSize.width,  //  window.innerWidth - data.dataConf.marginbody, // document.getElementById('imgHome').offsetWidth,
             heightImg: (window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight) - data.dataConf.marginbody //  oImgSize.height // window.innerHeight - data.dataConf.marginbody //  document.getElementById('imgHome').offsetHeight
         });
@@ -48,11 +48,11 @@ class ImgHome extends React.Component{
 
 
     getWindowWidth = () => {
-        return (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth);
+        return (document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth);
     }
 
     getWindowHeight= () => {
-        return (window.innerHeight|| document.documentElement.clientHeight|| document.body.clientHeight);
+        return (document.documentElement.clientHeight|| document.body.clientHeight || window.innerHeight);
     }
 
     componentWillUnmount() {

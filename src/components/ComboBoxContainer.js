@@ -62,6 +62,9 @@ class ComboBoxContainer extends React.Component{
             var oDataSort = data.dataIco.sort((a, b) => a.name > b.name);
             for(var a = 0; a<oDataSort.length; a++)
             {
+                if (oDataSort[a].actionParams && oDataSort[a].actionParams === 'help') {
+
+                } else {
                 var oOpcion = {
                     value: oDataSort[a].id,
                     text: oDataSort[a].name,
@@ -69,6 +72,7 @@ class ComboBoxContainer extends React.Component{
                 }
 
                 oObjHelp.combocoleccion.push(oOpcion);
+                }
             }
             data.dataCombos.push(oObjHelp);
         }
@@ -102,8 +106,23 @@ class ComboBoxContainer extends React.Component{
         oObjDivContainer.style.display = "none"
     }
 
+    onStop = evt => {
+        // console.log('onStop');
+        // document.getElementById('txtSearch').focus();
+    }
+    
+    onStart = evt => {
+        // console.log('onStart');
+        // document.getElementById('txtSearch').focus();
+    }
+
+    handleDrag = evt => {
+       // console.log('handleDrag');
+       // document.getElementById('txtSearch').focus();
+    }
+
     render(){
-        const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
+        const dragHandlers = {onStart: this.onStart, onStop: this.onStop, onDrag: this.handleDrag};
         return (
             <Draggable bounds={{top: 0, left: 0, right: this.state.rightDraggable, bottom: this.state.bottomDraggable}} {...dragHandlers}>
                 <div id="divParentComboBoxContainer" className="divComboBox" style={{border:'1px solid white'}}>
